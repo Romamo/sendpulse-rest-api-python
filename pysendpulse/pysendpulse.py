@@ -80,7 +80,7 @@ class PySendPulse:
             filepath = "{}{}".format(self.__token_file_path, self.__token_hash_name)
             if os.path.isfile(filepath):
                 with open(filepath, 'rb') as f:
-                    self.__token = f.readline()
+                    self.__token = f.readline().decode()
 
             else:
                 logger.warning("Can't find file '{}' to read security token.".format(filepath))
