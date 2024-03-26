@@ -145,13 +145,15 @@ class PySendPulse:
             headers = {}
         # if use_json_content_type and params:
         headers['Content-Type'] = 'application/json'
-        params = json.dumps(params)
 
         if method == "POST":
+            params = json.dumps(params)
             response = requests.post(url, headers=headers, data=params)
         elif method == "PUT":
+            params = json.dumps(params)
             response = requests.put(url, headers=headers, data=params)
         elif method == "DELETE":
+            params = json.dumps(params)
             response = requests.delete(url, headers=headers, data=params)
         else:
             response = requests.get(url, headers=headers, params=params)
