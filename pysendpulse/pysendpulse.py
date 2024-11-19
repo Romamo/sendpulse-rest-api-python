@@ -221,6 +221,18 @@ class PySendPulse:
         return message
 
     # ------------------------------------------------------------------ #
+    #                             DETAILED BALANCE                       #
+    # ------------------------------------------------------------------ #
+
+    def get_user_balance_detail(self):
+        """ Get balance details https://sendpulse.com/integrations/api/bulk-email#get-balance-details
+
+        @return: dictionary with response message
+        """
+        logger.info("Function call: get_user_balance_detail")
+        return self.__handle_result(self.__send_request('user/balance/detail'))
+
+    # ------------------------------------------------------------------ #
     #                             BALANCE                                #
     # ------------------------------------------------------------------ #
 
