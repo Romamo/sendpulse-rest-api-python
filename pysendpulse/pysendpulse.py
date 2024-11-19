@@ -343,6 +343,23 @@ class PySendPulse:
             return self.__handle_error("Emails list can't be converted by JSON library")
         return self.__handle_result(self.__send_request('addressbooks/{}/emails'.format(id), 'POST', {'emails': emails}))
 
+    def unsubscribe_emails_from_addressbook(self, id, emails):
+        """ Add new emails to addressbook
+
+        @param id: unsigned int addressbook ID
+        @param emails: list of emails ['test_1@test_1.com', ..., 'test_n@test_n.com']
+        @return: dictionary with response message
+        """
+        logger.info("Function call: add_emails_to_addressbook into: {}".format(id, ))
+        if not id or not emails:
+            self.__handle_error("Empty addressbook id or emails")
+        try:
+            emails = json.dumps(emails)
+        except:
+            logger.debug("Emails: {}".format(emails))
+            return self.__handle_error("Emails list can't be converted by JSON library")
+        return self.__handle_result(self.__send_request('addressbooks/{}/emails/unsubscribe'.format(id), 'POST', {'emails': emails}))
+
     def delete_emails_from_addressbook(self, id, emails):
         """ Delete email addresses from addressbook
 
